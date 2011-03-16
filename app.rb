@@ -4,15 +4,11 @@ module SendgridEventProxy
     post "/sendgrid_event.json" do
       request.body.rewind
       data = JSON.parse(request.body.read)
-      institution, model = data["category"].to_s.split("#")
-      if institution
-        institution_address = "http://#{institution}.domain.com/sendgrid_event.json"
-        RestClient.post(institution_address, data.to_json, :content_type => :json, :accept => :json)
-      end    
+      SendgridEvent.create(data) rescue nil
       nil
     end
 
     # para testar:
-    # curl -H 'Content-Type: application/json' -d "{\"val\":\"var\"}" -X POST http://localhost:4567/sendgrid_event.json > error.html    
+    # curl -H 'Content-Type: application/json' -d "{\"event\":\"processed\",\"email\":\"example@example.org\"}" -X POST http://localhost:4567/sendgrid_event.json
   end
 end
