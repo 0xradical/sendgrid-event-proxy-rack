@@ -1,8 +1,5 @@
-require 'rubygems'
-require 'bundler'
-
-Bundler.require(:default)
-
+require 'bundler_helper'
+require 'sinatra'
 require 'app'
 
 use SendgridEventProxy::Application
