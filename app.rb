@@ -4,6 +4,12 @@ module SendgridEventProxy
     post "/sendgrid_event.json" do
       request.body.rewind
       data = JSON.parse(request.body.read)
+      # para teste apenas
+      
+      File.open('teste.yml','w') do |f|
+        f.puts(data.to_yaml)
+      end
+      
       SendgridEvent.create(data) rescue nil
       nil
     end
