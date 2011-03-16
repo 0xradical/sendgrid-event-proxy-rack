@@ -11,7 +11,6 @@ class SendgridEvent
   property :reason,   String
   property :response, String
   property :attempt,  String
-  property :reason,   String
   property :type,     String
   property :status,   String
   property :url,      String
