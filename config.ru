@@ -1,8 +1,9 @@
 require 'rubygems'
 require 'bundler'
 
-Bundler.require
+Bundler.require(:default)
 
-require './app'
+require 'app'
 
+use SendgridEventProxy::Application
 run Sinatra::Application
