@@ -1,4 +1,6 @@
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/../shared/production.db")
+db_settings_hash = YAML.load_file("#{settings.root}/config/database.yml")
+
+DataMapper.setup(:default, db_settings_hash[ENV['RACK_ENV']])
 
 class SendgridEvent
   
