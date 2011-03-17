@@ -1,2 +1,5 @@
 # all db files
 *.db
+
+log/*.log
+tmp/**/*
