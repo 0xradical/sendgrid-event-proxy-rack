@@ -1,7 +1,7 @@
 module SendgridEventProxy
   class Application < Sinatra::Base
     
-    post "/sendgrid_event.json" do
+    post "/sendgrid_event" do
       request.body.rewind
       data = JSON.parse(request.body.read)
       # para teste apenas
