@@ -1,0 +1,9 @@
+## Issues
+
+### Delayed Job
+
+Delayed Job is heavily dependent on Rails and while it may work without it,
+it requires fugly monkey patches. First of all, DataMapper doesn't work properly
+with DJ because the deserialization process is a little different from regular ORMs
+and screws up DJ workers. ActiveRecord may be used but then DJ thinks you're in a Rails environment.
+You have to explicitly tell it's not, which means fugly patching.
